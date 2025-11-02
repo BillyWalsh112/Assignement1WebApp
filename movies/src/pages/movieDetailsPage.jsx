@@ -6,7 +6,7 @@ import useMovie from "../hooks/useMovie";
 import { getMovie } from '../api/tmdb-api'
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/spinner'
-
+import { Link } from "react-router-dom";
 
 
 const MoviePage = (props) => {
@@ -29,6 +29,9 @@ const MoviePage = (props) => {
     <>
       {movie ? (
         <>
+        <Link to={`/movies/${movie.id}/recommendations`}>
+  <button className="btn btn-primary">View Recommendations</button>
+</Link>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
           </PageTemplate>

@@ -136,3 +136,15 @@ export const getTrendingMovies = () => {
   });
 };
 
+export const getMovieRecommendations = ({ queryKey }) => {
+  const [, { id }] = queryKey;
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${import.meta.env.VITE_TMDB_KEY}`
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error("Failed to fetch recommended movies");
+    }
+    return response.json();
+  });
+};
+
