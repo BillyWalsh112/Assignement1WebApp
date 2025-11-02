@@ -12,6 +12,7 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
+import TrendingMoviesPage from "./pages/trendingMoviesPage";
 import PopularMoviesPage from "./pages/PopularMoviesPage";
 
 const queryClient = new QueryClient({
@@ -43,6 +44,9 @@ const App = () => {
             <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
             <Route path="/movies/top-rated" element={<TopRatedMoviesPage />} />
             <Route path="/movies/popular" element={<PopularMoviesPage />} />
+            <Route path="/movies/trending" element={<TrendingMoviesPage />} />
+
+            
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
