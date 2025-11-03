@@ -4,6 +4,7 @@ import { getPopularMovies } from "../api/tmdb-api";
 import PageTemplate from "../components/templateMovieListPage";
 import Spinner from "../components/spinner";
 import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
+import AddToWatchlistIcon from "../components/cardIcons/addToWatchlist";
 
 export default function PopularMoviesPage() {
   const { data, error, isPending, isError } = useQuery({
@@ -14,11 +15,16 @@ export default function PopularMoviesPage() {
     if (isPending) return <Spinner />;
   if (isError) return <h1>{error.message}</h1>;
 
-    return (
+  return (
     <PageTemplate
       title="Popular Movies"
       movies={data.results}
-      action={(m) => <AddToFavoritesIcon movie={m} />}
+      action={(m) => (
+        <>
+          <AddToFavoritesIcon movie={m} />
+          <AddToWatchlistIcon movie={m} />
+        </>
+      )}
     />
   );
 }

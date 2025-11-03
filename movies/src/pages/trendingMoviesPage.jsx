@@ -4,6 +4,7 @@ import { getTrendingMovies } from "../api/tmdb-api";
 import PageTemplate from "../components/templateMovieListPage";
 import Spinner from "../components/spinner";
 import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
+import AddToWatchlistIcon from "../components/cardIcons/addToWatchlist";
 
 export default function TrendingMoviesPage() {
   const { data, error, isPending, isError } = useQuery({
@@ -18,7 +19,12 @@ export default function TrendingMoviesPage() {
     <PageTemplate
       title="Trending Movies"
       movies={data.results}
-      action={(m) => <AddToFavoritesIcon movie={m} />}
+      action={(m) => (
+        <>
+          <AddToFavoritesIcon movie={m} />
+          <AddToWatchlistIcon movie={m} />
+        </>
+      )}
     />
   );
 }
